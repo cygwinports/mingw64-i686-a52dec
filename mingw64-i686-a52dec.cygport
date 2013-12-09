@@ -1,0 +1,24 @@
+CROSS_HOST="i686-w64-mingw32"
+inherit cross
+
+NAME="mingw64-i686-a52dec"
+VERSION=0.7.4
+RELEASE=1
+CATEGORY="Devel"
+SUMMARY="ATSC A/52 (AC-3) decoder library for Win32 toolchain"
+DESCRIPTION="liba52 is a free library for decoding ATSC A/52 (AC-3) streams.
+The A/52 standard is used in a variety of applications, including digital
+television and DVD."
+HOMEPAGE="http://liba52.sourceforge.net/"
+SRC_URI="http://liba52.sourceforge.net/files/a52dec-${VERSION}.tar.gz"
+SRC_DIR="a52dec-${VERSION}"
+
+src_install() {
+	cd ${B}
+	cyginstall bin_PROGRAMS= man_MANS=
+
+	# required for xine-lib
+	includeinto a52dec
+	doinclude ${S}/liba52/a52_internal.h
+}
+DOCS="doc/liba52.txt"
