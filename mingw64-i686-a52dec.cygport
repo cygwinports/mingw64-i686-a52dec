@@ -3,7 +3,7 @@ inherit cross
 
 NAME="mingw64-i686-a52dec"
 VERSION=0.7.4
-RELEASE=1
+RELEASE=2
 CATEGORY="Devel"
 SUMMARY="ATSC A/52 (AC-3) decoder library for Win32 toolchain"
 DESCRIPTION="liba52 is a free library for decoding ATSC A/52 (AC-3) streams.
@@ -12,6 +12,9 @@ television and DVD."
 HOMEPAGE="http://liba52.sourceforge.net/"
 SRC_URI="http://liba52.sourceforge.net/files/a52dec-${VERSION}.tar.gz"
 SRC_DIR="a52dec-${VERSION}"
+PATCH_URI="
+	https://raw.githubusercontent.com/Alexpux/MINGW-packages/master/mingw-w64-a52dec/0002-do-not-AC_C_ALWAYS_INLINE-it-redefines-inline-breaking-mingw-w64-GCC-5.1.0-C99.patch
+"
 
 src_install() {
 	cd ${B}
